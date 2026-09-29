@@ -1,0 +1,3895 @@
+/* =========================================================
+   TALABY NOW GROUP
+   MAIN WEBSITE STYLES
+========================================================= */
+
+:root {
+  --navy: #071622;
+  --navy-2: #0b2131;
+  --navy-3: #102c3e;
+
+  --yellow: #ffc400;
+  --yellow-dark: #e6ac00;
+
+  --white: #ffffff;
+  --off-white: #f5f7f8;
+
+  --text: #142a3b;
+  --muted: #647383;
+  --line: rgba(255,255,255,.16);
+
+  --header-height: 78px;
+
+  --radius: 2px;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+
+img {
+  max-width: 100%;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+  position: fixed;
+  z-index: 1000;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: var(--header-height);
+
+  padding: 0 5vw;
+
+  display: flex;
+  align-items: center;
+
+  background: rgba(7, 22, 34, .94);
+
+  border-bottom: 1px solid rgba(255,255,255,.08);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+
+/* LOGO */
+
+.brand {
+  width: 125px;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+
+.brand img {
+  width: 112px;
+  height: 64px;
+
+  display: block;
+
+  object-fit: contain;
+
+  /*
+    IMPORTANT:
+    The logo is already transparent.
+    No blend mode and no color filter.
+    This keeps the original yellow N exactly as it is.
+  */
+
+  mix-blend-mode: normal;
+
+  filter:
+    drop-shadow(1.5px 0 0 rgba(255,255,255,.9))
+    drop-shadow(-1.5px 0 0 rgba(255,255,255,.9))
+    drop-shadow(0 1.5px 0 rgba(255,255,255,.9))
+    drop-shadow(0 -1.5px 0 rgba(255,255,255,.9));
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.main-nav {
+  margin-left: auto;
+  margin-right: 48px;
+
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 38px;
+}
+
+
+.main-nav a {
+  position: relative;
+
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  color: rgba(255,255,255,.88);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: .08em;
+
+  transition: color .25s ease;
+}
+
+
+.main-nav a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 4px;
+
+  background: var(--yellow);
+
+  transform: scaleX(0);
+
+  transition: transform .25s ease;
+}
+
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--white);
+}
+
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  transform: scaleX(1);
+}
+
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+.language-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+
+.language-button {
+  min-width: 184px;
+  height: 50px;
+
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border: 1px solid rgba(255,255,255,.7);
+  border-radius: 5px;
+
+  color: var(--white);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: .08em;
+
+  cursor: pointer;
+
+  transition: .25s ease;
+}
+
+
+.language-button:hover {
+  border-color: var(--yellow);
+}
+
+
+.language-icon {
+  color: var(--yellow);
+  font-size: 22px;
+  line-height: 1;
+}
+
+
+.language-arrow {
+  margin-left: auto;
+  font-size: 18px;
+}
+
+
+.language-menu {
+  position: absolute;
+
+  top: calc(100% + 8px);
+  right: 0;
+
+  width: 184px;
+
+  padding: 6px;
+
+  display: none;
+
+  background: var(--navy-2);
+
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 5px;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+}
+
+
+.language-wrap.open .language-menu {
+  display: block;
+}
+
+
+.language-menu button {
+  width: 100%;
+
+  padding: 12px 14px;
+
+  border: 0;
+  background: transparent;
+
+  color: var(--white);
+
+  text-align: left;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.language-menu button:hover {
+  background: rgba(255,196,0,.1);
+  color: var(--yellow);
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+========================================================= */
+
+.menu-toggle {
+  width: 38px;
+  height: 38px;
+
+  margin-left: 20px;
+
+  display: none;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+
+.menu-toggle span {
+  width: 27px;
+  height: 2px;
+
+  display: block;
+
+  background: var(--white);
+
+  transition: .25s ease;
+}
+
+
+.menu-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+
+.menu-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  position: relative;
+
+  min-height: 100svh;
+
+  padding-top: var(--header-height);
+
+  display: flex;
+  align-items: center;
+
+  background-size: cover;
+  background-position: center center;
+
+  color: var(--white);
+
+  overflow: hidden;
+}
+
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4,18,29,.94) 0%,
+      rgba(4,18,29,.86) 32%,
+      rgba(4,18,29,.48) 62%,
+      rgba(4,18,29,.12) 100%
+    );
+}
+
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(720px, 52vw);
+
+  margin-left: 7vw;
+
+  padding-top: 25px;
+}
+
+
+.eyebrow,
+.section-kicker {
+  color: var(--yellow);
+
+  font-size: 14px;
+  font-weight: 800;
+
+  letter-spacing: .28em;
+
+  text-transform: uppercase;
+}
+
+
+.hero h1 {
+  margin-top: 20px;
+
+  font-size: clamp(54px, 5.2vw, 82px);
+
+  line-height: .98;
+
+  font-weight: 800;
+
+  letter-spacing: -.045em;
+}
+
+
+.hero h1 span {
+  display: block;
+  color: var(--yellow);
+}
+
+
+.hero-text {
+  max-width: 600px;
+
+  margin-top: 28px;
+
+  color: rgba(255,255,255,.92);
+
+  font-size: 18px;
+  line-height: 1.75;
+
+  font-weight: 500;
+}
+
+
+.hero-buttons {
+  margin-top: 30px;
+
+  display: flex;
+  gap: 18px;
+}
+
+
+.btn {
+  min-width: 230px;
+  height: 60px;
+
+  padding: 0 26px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  border-radius: 4px;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: .1em;
+
+  transition: .25s ease;
+}
+
+
+.btn span {
+  font-size: 20px;
+}
+
+
+.btn-outline {
+  color: var(--white);
+
+  border: 1px solid var(--white);
+}
+
+
+.btn-outline:hover {
+  color: var(--navy);
+  background: var(--white);
+}
+
+
+.btn-yellow {
+  color: var(--navy);
+
+  background: var(--yellow);
+
+  border: 1px solid var(--yellow);
+}
+
+
+.btn-yellow:hover {
+  background: #ffd329;
+  transform: translateY(-2px);
+}
+
+
+.hero-location {
+  margin-top: 42px;
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  color: rgba(255,255,255,.9);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: .12em;
+}
+
+
+.location-icon {
+  color: var(--yellow);
+  font-size: 20px;
+}
+
+
+.scroll-down {
+  position: absolute;
+
+  z-index: 2;
+
+  right: 6vw;
+  bottom: 35px;
+
+  color: rgba(255,255,255,.9);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: .16em;
+}
+
+
+.scroll-down span {
+  margin-left: 8px;
+
+  color: var(--yellow);
+
+  font-size: 22px;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-section {
+  min-height: 100svh;
+
+  padding: 90px 7vw;
+
+  display: flex;
+  align-items: center;
+
+  background: var(--white);
+}
+
+
+.about-content {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  align-items: center;
+
+  gap: 90px;
+}
+
+
+.about-text h2 {
+  margin-top: 20px;
+
+  color: var(--navy);
+
+  font-size: clamp(42px, 4.3vw, 65px);
+
+  line-height: 1.08;
+
+  letter-spacing: -.04em;
+}
+
+
+.about-text p {
+  max-width: 610px;
+
+  margin-top: 28px;
+
+  color: #627486;
+
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+
+.about-text p + p {
+  margin-top: 14px;
+}
+
+
+.about-visual {
+  position: relative;
+
+  min-height: 470px;
+
+  padding: 100px 60px;
+
+  display: flex;
+  align-items: flex-start;
+
+  overflow: hidden;
+
+  background: var(--navy);
+
+  border-radius: 4px;
+}
+
+
+.about-visual-line {
+  position: absolute;
+
+  top: 68px;
+  left: 60px;
+
+  width: 72px;
+  height: 6px;
+
+  background: var(--yellow);
+}
+
+
+.about-visual-title {
+  position: relative;
+  z-index: 3;
+
+  color: var(--white);
+
+  font-size: 38px;
+  line-height: 1.05;
+}
+
+
+.about-visual-title strong {
+  display: block;
+
+  color: var(--yellow);
+
+  font-size: 48px;
+}
+
+
+.about-circle {
+  position: absolute;
+
+  width: 390px;
+  height: 390px;
+
+  border: 1px solid rgba(255,196,0,.45);
+
+  border-radius: 50%;
+}
+
+
+.circle-one {
+  top: 15px;
+  right: 15px;
+}
+
+
+.circle-two {
+  top: 75px;
+  right: 75px;
+}
+
+
+/* =========================================================
+   DARK SECTIONS
+========================================================= */
+
+.dark-section {
+  min-height: calc(100svh - var(--header-height));
+
+  padding: 75px 7vw 60px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--navy) 0%,
+      var(--navy-2) 100%
+    );
+
+  color: var(--white);
+}
+
+
+/* SOLUTIONS: one complete desktop viewport */
+.solutions-section {
+  height: calc(100svh - var(--header-height));
+  min-height: calc(100svh - var(--header-height));
+  overflow: hidden;
+}
+
+
+.section-heading {
+  margin-bottom: 35px;
+}
+
+
+.section-heading h2 {
+  margin-top: 14px;
+
+  font-size: clamp(38px, 4vw, 56px);
+
+  line-height: 1.05;
+
+  letter-spacing: -.04em;
+}
+
+
+.section-heading p {
+  max-width: 650px;
+
+  margin-top: 17px;
+
+  color: rgba(255,255,255,.65);
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   SOLUTION CARDS
+========================================================= */
+
+.solution-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 22px;
+}
+
+
+.solution-card {
+  overflow: hidden;
+
+  background: rgba(255,255,255,.045);
+
+  border: 1px solid rgba(255,255,255,.11);
+
+  border-radius: 4px;
+
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    background .3s ease;
+}
+
+
+.solution-card:hover {
+  transform: translateY(-6px);
+
+  background: rgba(255,255,255,.065);
+
+  border-color: rgba(255,196,0,.5);
+}
+
+
+.card-image {
+  height: 205px;
+
+  overflow: hidden;
+}
+
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform .5s ease;
+}
+
+
+.fleet-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(7,22,34,.18) 0%, rgba(7,22,34,0) 55%, rgba(255,196,0,.08) 100%);
+}
+
+.fleet-image {
+  position: relative;
+}
+
+.fleet-logo-badge {
+  position: absolute;
+  z-index: 3;
+  top: 14px;
+  left: 14px;
+  width: 76px;
+  height: 42px;
+  padding: 5px 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(7,22,34,.78);
+  border: 1px solid rgba(255,196,0,.75);
+  border-radius: 3px;
+}
+
+.fleet-logo-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter:
+    drop-shadow(1.5px 0 0 rgba(255,255,255,.9))
+    drop-shadow(-1.5px 0 0 rgba(255,255,255,.9))
+    drop-shadow(0 1.5px 0 rgba(255,255,255,.9))
+    drop-shadow(0 -1.5px 0 rgba(255,255,255,.9));
+}
+
+
+.solution-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+
+.card-body {
+  position: relative;
+
+  padding: 22px 23px 25px;
+}
+
+
+.card-number {
+  margin-bottom: 8px;
+
+  color: var(--yellow);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: .16em;
+}
+
+
+.card-body h3 {
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+
+.card-body p {
+  margin-top: 12px;
+
+  color: rgba(255,255,255,.65);
+
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+
+.card-body ul {
+  margin-top: 17px;
+  padding-left: 15px;
+}
+
+
+.card-body li {
+  margin-bottom: 7px;
+
+  color: rgba(255,255,255,.85);
+
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+
+.card-body li::marker {
+  color: var(--yellow);
+}
+
+
+/* =========================================================
+   WHY TNG
+========================================================= */
+
+.business-model-section {
+  height: calc(100svh - var(--header-height));
+  min-height: calc(100svh - var(--header-height));
+
+  padding: 72px 7vw 58px;
+
+  display: flex;
+  align-items: center;
+
+  background: var(--white);
+  color: var(--navy);
+
+  overflow: hidden;
+}
+
+.business-model-inner {
+  width: 100%;
+}
+
+.why-kicker {
+  color: var(--yellow);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.why-copy h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(48px, 5vw, 72px);
+  line-height: .98;
+  letter-spacing: -.045em;
+  font-weight: 800;
+}
+
+.why-copy h2 span {
+  color: var(--navy);
+}
+
+.why-copy p {
+  max-width: 760px;
+  margin-top: 20px;
+  color: #657686;
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.value-grid {
+  margin-top: 58px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.value-item {
+  position: relative;
+
+  min-height: 118px;
+  padding: 0 28px 10px 0;
+
+  display: block;
+  text-align: left;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  background: transparent;
+
+  color: var(--navy);
+  font: inherit;
+
+  cursor: pointer;
+}
+
+.value-item:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 6px;
+}
+
+.value-line {
+  width: 54px;
+  height: 6px;
+
+  display: block;
+  margin-bottom: 25px;
+
+  background: var(--yellow);
+
+  transform-origin: left center;
+  transition:
+    width .3s ease,
+    transform .3s ease,
+    opacity .3s ease;
+}
+
+.value-item:not(.active) .value-line {
+  opacity: .72;
+}
+
+.value-item.active .value-line {
+  width: 92px;
+  transform: translateX(2px);
+  opacity: 1;
+}
+
+.value-content {
+  display: block;
+}
+
+.value-item b {
+  display: block;
+  color: var(--navy);
+  font-size: 23px;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  transition: color .25s ease;
+}
+
+.value-item small {
+  display: block;
+  margin-top: 7px;
+  color: #7b8894;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+}
+
+.value-item:hover b,
+.value-item.active b {
+  color: var(--navy);
+}
+
+
+/* =========================================================
+   INDUSTRIES
+========================================================= */
+
+.industries-section {
+  min-height: 100svh;
+
+  padding: 90px 7vw;
+
+  background: var(--navy);
+
+  color: var(--white);
+}
+
+
+.light-heading h2 {
+  margin-top: 15px;
+
+  font-size: clamp(40px, 4vw, 58px);
+
+  line-height: 1.05;
+}
+
+
+.industries-grid {
+  margin-top: 55px;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  border-top: 1px solid rgba(255,255,255,.15);
+}
+
+
+.industry-item {
+  min-height: 125px;
+
+  padding: 28px 25px;
+
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  border-bottom: 1px solid rgba(255,255,255,.15);
+}
+
+
+.industry-item:nth-child(odd) {
+  border-right: 1px solid rgba(255,255,255,.15);
+}
+
+
+.industry-item span {
+  color: var(--yellow);
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+.industry-item strong {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   VALUE STRIP
+========================================================= */
+
+.value-strip {
+  min-height: 190px;
+
+  padding: 35px 7vw;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  align-items: center;
+
+  background: var(--yellow);
+
+  color: var(--navy);
+}
+
+
+.value-strip > div {
+  padding: 10px 35px;
+
+  border-right: 1px solid rgba(7,22,34,.2);
+}
+
+
+.value-strip > div:last-child {
+  border-right: 0;
+}
+
+
+.value-strip strong,
+.value-strip span {
+  display: block;
+}
+
+
+.value-strip strong {
+  font-size: 28px;
+  font-weight: 800;
+
+  letter-spacing: -.02em;
+}
+
+
+.value-strip span {
+  margin-top: 4px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: .15em;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-section {
+  min-height: 100svh;
+
+  padding: 90px 7vw;
+
+  display: flex;
+  align-items: center;
+
+  background: var(--off-white);
+}
+
+
+.contact-inner {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: .85fr 1.15fr;
+
+  gap: 90px;
+
+  align-items: start;
+}
+
+
+.contact-info h2 {
+  margin-top: 20px;
+
+  color: var(--navy);
+
+  font-size: clamp(42px, 4.2vw, 64px);
+
+  line-height: 1.05;
+
+  letter-spacing: -.045em;
+}
+
+
+.contact-info > p {
+  max-width: 520px;
+
+  margin-top: 25px;
+
+  color: #667585;
+
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+
+.contact-details {
+  margin-top: 40px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 13px;
+}
+
+
+.contact-details a,
+.contact-details span {
+  color: var(--navy);
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+.contact-details a:hover {
+  color: var(--yellow-dark);
+}
+
+
+/* FORM */
+
+.contact-form {
+  padding: 35px;
+
+  background: var(--white);
+
+  border: 1px solid #e1e6e9;
+
+  box-shadow: 0 20px 50px rgba(7,22,34,.06);
+}
+
+
+.form-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 20px;
+}
+
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: var(--navy);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+
+  padding: 14px 15px;
+
+  color: var(--navy);
+
+  background: #f7f9fa;
+
+  border: 1px solid #dce3e7;
+
+  outline: none;
+
+  border-radius: 2px;
+
+  transition: border-color .2s ease;
+}
+
+
+.form-group input {
+  height: 49px;
+}
+
+
+.form-group textarea {
+  resize: vertical;
+
+  min-height: 130px;
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--yellow-dark);
+}
+
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #9ba6af;
+}
+
+
+.form-submit {
+  width: 100%;
+  height: 56px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 20px;
+
+  color: var(--navy);
+
+  background: var(--yellow);
+
+  border: 0;
+  border-radius: 2px;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: .1em;
+
+  cursor: pointer;
+
+  transition: .25s ease;
+}
+
+
+.form-submit:hover {
+  background: #ffd329;
+}
+
+
+.form-submit:disabled {
+  opacity: .7;
+  cursor: wait;
+}
+
+
+.form-submit span {
+  font-size: 20px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+  padding: 55px 7vw 25px;
+
+  background: #04111a;
+
+  color: var(--white);
+}
+
+
+.footer-top {
+  padding-bottom: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+
+.footer-brand {
+  width: 150px;
+  height: 65px;
+
+  display: flex;
+  align-items: center;
+}
+
+
+.footer-brand img {
+  width: 125px;
+  height: 62px;
+
+  display: block;
+
+  object-fit: contain;
+
+  /*
+    No blend mode / color changes.
+    Original TNG yellow remains untouched.
+  */
+
+  mix-blend-mode: normal;
+
+  filter:
+    drop-shadow(1.5px 0 0 rgba(255,255,255,.9))
+    drop-shadow(-1.5px 0 0 rgba(255,255,255,.9))
+    drop-shadow(0 1.5px 0 rgba(255,255,255,.9))
+    drop-shadow(0 -1.5px 0 rgba(255,255,255,.9));
+}
+
+
+.footer-top p {
+  color: rgba(255,255,255,.55);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+
+.footer-bottom {
+  padding-top: 22px;
+
+  display: flex;
+  justify-content: space-between;
+
+  color: rgba(255,255,255,.4);
+
+  font-size: 9px;
+  font-weight: 500;
+
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+
+/* =========================================================
+   DESKTOP SHORT SCREEN
+========================================================= */
+
+@media (min-width: 901px) and (max-height: 850px) {
+
+  .dark-section {
+    min-height: 0;
+
+    padding-top: 48px;
+    padding-bottom: 42px;
+  }
+
+
+  .dark-section .section-heading {
+    margin-bottom: 22px;
+  }
+
+
+  .dark-section .section-heading h2 {
+    font-size: 43px;
+    margin-top: 10px;
+  }
+
+
+  .dark-section .section-heading p {
+    margin-top: 10px;
+    font-size: 11px;
+  }
+
+
+  .solution-grid {
+    gap: 16px;
+  }
+
+
+  .card-image {
+    height: 155px;
+  }
+
+
+  .card-body {
+    padding: 16px 18px 18px;
+  }
+
+
+  .card-body h3 {
+    font-size: 18px;
+  }
+
+
+  .card-body p {
+    margin-top: 8px;
+    font-size: 10px;
+  }
+
+
+  .card-body ul {
+    margin-top: 11px;
+  }
+
+
+  .card-body li {
+    margin-bottom: 4px;
+    font-size: 8px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .main-nav {
+    gap: 22px;
+    margin-right: 25px;
+  }
+
+
+  .main-nav a {
+    font-size: 10px;
+  }
+
+
+  .language-button {
+    min-width: 150px;
+  }
+
+
+  .hero-content {
+    width: 62vw;
+  }
+
+
+  .about-content {
+    gap: 45px;
+  }
+
+
+  .solution-grid {
+    gap: 15px;
+  }
+
+
+  .contact-inner {
+    gap: 45px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  :root {
+    --header-height: 70px;
+  }
+
+
+  /* HEADER */
+
+  .site-header {
+    height: 70px;
+
+    padding: 0 6vw;
+  }
+
+
+  .brand {
+    width: 100px;
+    height: 62px;
+  }
+
+
+  .brand img {
+    width: 94px;
+    height: 58px;
+
+    filter:
+      drop-shadow(1px 0 0 rgba(255,255,255,.82))
+      drop-shadow(-1px 0 0 rgba(255,255,255,.82))
+      drop-shadow(0 1px 0 rgba(255,255,255,.82))
+      drop-shadow(0 -1px 0 rgba(255,255,255,.82));
+  }
+
+
+  .main-nav {
+    position: absolute;
+
+    top: 70px;
+    left: 0;
+    right: 0;
+
+    height: auto;
+
+    margin: 0;
+    padding: 12px 6vw 20px;
+
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    background: rgba(7,22,34,.98);
+
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
+
+
+  .main-nav.open {
+    display: flex;
+  }
+
+
+  .main-nav a {
+    height: 50px;
+
+    justify-content: flex-start;
+
+    font-size: 11px;
+  }
+
+
+  .main-nav a::after {
+    display: none;
+  }
+
+
+  .language-wrap {
+    margin-left: auto;
+  }
+
+
+  .language-button {
+    min-width: 120px;
+    height: 42px;
+
+    font-size: 9px;
+  }
+
+
+  .language-icon {
+    font-size: 18px;
+  }
+
+
+  .language-menu {
+    width: 140px;
+  }
+
+
+  .menu-toggle {
+    display: flex;
+  }
+
+
+  /* HERO */
+
+  .hero {
+    min-height: 100svh;
+
+    align-items: center;
+
+    background-position: 62% center;
+  }
+
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(4,18,29,.95) 0%,
+        rgba(4,18,29,.78) 70%,
+        rgba(4,18,29,.35) 100%
+      );
+  }
+
+
+  .hero-content {
+    width: auto;
+
+    margin: 0;
+
+    padding: 0 8vw;
+  }
+
+
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: .2em;
+  }
+
+
+  .hero h1 {
+    margin-top: 15px;
+
+    font-size: clamp(42px, 12vw, 65px);
+  }
+
+
+  .hero-text {
+    margin-top: 22px;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+
+  .hero-buttons {
+    margin-top: 25px;
+
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+
+  .btn {
+    width: 100%;
+    min-width: 0;
+
+    height: 54px;
+  }
+
+
+  .hero-location {
+    margin-top: 30px;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+  }
+
+
+  .scroll-down {
+    right: 8vw;
+    bottom: 22px;
+
+    font-size: 8px;
+  }
+
+
+  /* ABOUT */
+
+  .about-section {
+    min-height: auto;
+
+    padding: 80px 7vw;
+  }
+
+
+  .about-content {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+
+  .about-text h2 {
+    font-size: 40px;
+  }
+
+
+  .about-text p {
+    font-size: 13px;
+  }
+
+
+  .about-visual {
+    min-height: 350px;
+
+    padding: 80px 35px;
+  }
+
+
+  .about-visual-line {
+    left: 35px;
+  }
+
+
+  .about-visual-title {
+    font-size: 30px;
+  }
+
+
+  .about-visual-title strong {
+    font-size: 39px;
+  }
+
+
+  /* SOLUTIONS */
+
+  .dark-section {
+    min-height: auto;
+
+    padding: 80px 7vw;
+  }
+
+  .solutions-section {
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+  }
+
+
+  .section-heading h2 {
+    font-size: 40px;
+  }
+
+
+  .solution-grid {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+
+  .card-image {
+    height: 230px;
+  }
+
+
+  /* BUSINESS MODEL */
+
+  .business-model-section {
+    min-height: auto;
+    padding: 78px 6vw;
+    background:
+      radial-gradient(circle at 85% 15%, rgba(255,196,0,.07), transparent 32%),
+      linear-gradient(135deg, #061521 0%, #0a1e2d 58%, #071622 100%);
+    color: var(--white);
+  }
+
+  .business-model-inner {
+    display: block;
+  }
+
+  .why-copy h2 {
+    margin: 0;
+    color: var(--white);
+    font-size: 42px;
+    line-height: 1;
+  }
+
+  .why-copy p {
+    margin-top: 18px;
+    color: rgba(255,255,255,.65);
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .why-line {
+    margin-top: 22px;
+  }
+
+  .why-note {
+    font-size: 8px;
+  }
+
+
+  .business-model-section .value-grid {
+    margin-top: 34px;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .business-model-section .value-item {
+    min-height: 135px;
+    padding: 18px 15px;
+    grid-template-columns: 25px 1fr;
+    grid-template-rows: 32px 1fr;
+  }
+
+
+  .value-index {
+    color: rgba(255,255,255,.42);
+    font-size: 8px;
+  }
+
+  .value-mark {
+    width: 28px;
+    height: 28px;
+    font-size: 8px;
+  }
+
+  .business-model-section .value-item > div {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+
+  .business-model-section .value-item b {
+    color: var(--white);
+    font-size: 16px;
+  }
+
+  .business-model-section .value-item small {
+    margin-top: 5px;
+    font-size: 8px;
+  }
+}
+
+
+/* =========================================================
+   FINAL SECTION SIZING + WHY TNG REFINEMENT
+========================================================= */
+
+html {
+  scroll-padding-top: var(--header-height);
+}
+
+@media (min-width: 901px) {
+  .hero {
+    height: 100svh;
+    min-height: 100svh;
+    scroll-margin-top: var(--header-height);
+  }
+
+  .about-section,
+  .solutions-section,
+  .business-model-section,
+  .industries-section,
+  .contact-section {
+    height: calc(100svh - var(--header-height));
+    min-height: calc(100svh - var(--header-height));
+    scroll-margin-top: var(--header-height);
+    overflow: hidden;
+  }
+
+  .solutions-section {
+    padding-top: 48px;
+    padding-bottom: 38px;
+  }
+
+  .solutions-section .section-heading {
+    margin-bottom: 22px;
+  }
+
+  .solutions-section .section-heading h2 {
+    margin-top: 10px;
+  }
+
+  .solutions-section .section-heading p {
+    margin-top: 10px;
+  }
+
+  .solutions-section .card-image {
+    height: 170px;
+  }
+
+  .solutions-section .card-body {
+    padding: 16px 18px 18px;
+  }
+
+  .solutions-section .card-body h3 {
+    font-size: 18px;
+  }
+
+  .solutions-section .card-body p {
+    margin-top: 8px;
+    font-size: 10px;
+    line-height: 1.55;
+  }
+
+  .solutions-section .card-body ul {
+    margin-top: 10px;
+  }
+
+  .solutions-section .card-body li {
+    margin-bottom: 4px;
+    font-size: 8px;
+  }
+
+  .business-model-section {
+    padding-top: 62px;
+    padding-bottom: 50px;
+  }
+}
+
+@media (min-width: 901px) and (max-height: 850px) {
+  .solutions-section {
+    padding-top: 42px;
+    padding-bottom: 32px;
+  }
+
+  .solutions-section .section-heading {
+    margin-bottom: 18px;
+  }
+
+  .solutions-section .section-heading h2 {
+    font-size: 42px;
+  }
+
+  .solutions-section .section-heading p {
+    font-size: 10px;
+  }
+
+  .solutions-section .card-image {
+    height: 150px;
+  }
+
+  .business-model-section {
+    padding-top: 46px;
+    padding-bottom: 38px;
+  }
+
+  .why-kicker {
+    font-size: 14px;
+    margin-bottom: 13px;
+  }
+
+  .why-copy h2 {
+    font-size: 48px;
+  }
+
+  .why-copy p {
+    margin-top: 15px;
+    font-size: 11px;
+  }
+
+  .value-grid {
+    margin-top: 38px;
+  }
+
+  .value-item {
+    min-height: 100px;
+  }
+
+  .value-line {
+    height: 5px;
+    margin-bottom: 18px;
+  }
+
+  .value-item.active .value-line {
+    width: 78px;
+  }
+
+  .value-item b {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: 100svh;
+    height: 100svh;
+  }
+
+  .about-section,
+  .solutions-section,
+  .business-model-section,
+  .industries-section,
+  .contact-section {
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+    scroll-margin-top: var(--header-height);
+  }
+
+  .business-model-section {
+    padding: 72px 6vw;
+    background: var(--white);
+    color: var(--navy);
+  }
+
+  .business-model-inner {
+    display: block;
+  }
+
+  .why-kicker {
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+
+  .why-copy h2 {
+    font-size: 42px;
+    line-height: 1;
+  }
+
+  .why-copy p {
+    margin-top: 18px;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .business-model-section .value-grid {
+    margin-top: 34px;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 18px;
+  }
+
+  .business-model-section .value-item {
+    min-height: 92px;
+    padding: 0;
+  }
+
+  .business-model-section .value-line {
+    width: 42px;
+    height: 5px;
+    margin-bottom: 17px;
+  }
+
+  .business-model-section .value-item.active .value-line {
+    width: 70px;
+  }
+
+  .business-model-section .value-item b {
+    color: var(--navy);
+    font-size: 17px;
+  }
+
+  .business-model-section .value-item small {
+    margin-top: 5px;
+    color: #7b8894;
+    font-size: 8px;
+  }
+}
+
+
+/* =========================================================
+   FINAL VIEWPORT + WHY TNG POLISH
+   Keeps each main section to one clean viewport below the
+   fixed header and removes any overlap between sections.
+========================================================= */
+
+@media (min-width: 901px) {
+  .hero {
+    width: 100%;
+    height: 100svh;
+    min-height: 100svh;
+  }
+
+  .about-section,
+  .solutions-section,
+  .business-model-section,
+  .industries-section,
+  .contact-section {
+    width: 100%;
+    height: calc(100svh - var(--header-height));
+    min-height: calc(100svh - var(--header-height));
+    max-height: calc(100svh - var(--header-height));
+    margin: 0;
+    scroll-margin-top: var(--header-height);
+    overflow: hidden;
+  }
+
+  /* WHY TNG — clean full-screen layout */
+  .business-model-section {
+    padding: 64px 7vw 54px;
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    color: var(--navy);
+  }
+
+  .business-model-inner {
+    width: 100%;
+    max-width: none;
+  }
+
+  .why-kicker {
+    display: block;
+    margin: 0 0 18px;
+    color: var(--yellow);
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: .34em;
+  }
+
+  .why-copy h2 {
+    margin: 0;
+    color: var(--navy);
+    font-size: clamp(50px, 5.1vw, 76px);
+    line-height: .98;
+    letter-spacing: -.045em;
+    font-weight: 800;
+  }
+
+  .why-copy h2 span {
+    color: var(--navy);
+  }
+
+  .why-copy p {
+    max-width: 900px;
+    margin: 20px 0 0;
+    color: #647383;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* No boxes, no vertical dividers, no horizontal divider. */
+  .value-grid {
+    width: 100%;
+    margin-top: 54px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 34px;
+  }
+
+  .value-item {
+    position: relative;
+    min-height: 112px;
+    padding: 0;
+    border: 0 !important;
+    border-radius: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--navy);
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .value-item::before,
+  .value-item::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .value-line {
+    width: 46px;
+    height: 7px;
+    margin: 0 0 24px;
+    display: block;
+    background: var(--yellow);
+    opacity: .72;
+    transform: translateX(0) scaleX(1);
+    transform-origin: left center;
+    transition: width .32s ease, transform .32s ease, opacity .25s ease;
+  }
+
+  .value-item.active .value-line {
+    width: 92px;
+    opacity: 1;
+    transform: translateX(0) scaleX(1);
+  }
+
+  .value-content {
+    display: block;
+  }
+
+  .value-item b {
+    display: block;
+    color: var(--navy);
+    font-size: 24px;
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -.025em;
+    transition: transform .32s ease, color .25s ease;
+  }
+
+  .value-item small {
+    display: block;
+    margin-top: 7px;
+    color: #7b8894;
+    font-size: 10px;
+    line-height: 1;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .17em;
+  }
+
+  .value-item:hover .value-line,
+  .value-item.active .value-line {
+    opacity: 1;
+  }
+
+  .value-item:hover b,
+  .value-item.active b {
+    color: var(--navy);
+    transform: translateX(3px);
+  }
+
+  .value-item:focus-visible {
+    outline: 2px solid var(--yellow);
+    outline-offset: 8px;
+  }
+}
+
+/* Short desktop screens: keep the entire Why TNG section visible. */
+@media (min-width: 901px) and (max-height: 850px) {
+  .business-model-section {
+    padding-top: 42px;
+    padding-bottom: 36px;
+  }
+
+  .why-kicker {
+    margin-bottom: 13px;
+    font-size: 15px;
+  }
+
+  .why-copy h2 {
+    font-size: 48px;
+  }
+
+  .why-copy p {
+    margin-top: 14px;
+    font-size: 11px;
+  }
+
+  .value-grid {
+    margin-top: 34px;
+    gap: 26px;
+  }
+
+  .value-item {
+    min-height: 92px;
+  }
+
+  .value-line {
+    width: 44px;
+    height: 6px;
+    margin-bottom: 17px;
+  }
+
+  .value-item.active .value-line {
+    width: 78px;
+  }
+
+  .value-item b {
+    font-size: 19px;
+  }
+
+  .value-item small {
+    margin-top: 6px;
+    font-size: 9px;
+  }
+}
+
+/* Mobile: let content grow naturally instead of cutting it. */
+@media (max-width: 900px) {
+  .about-section,
+  .solutions-section,
+  .business-model-section,
+  .industries-section,
+  .contact-section {
+    width: 100%;
+    height: auto;
+    min-height: 100svh;
+    max-height: none;
+    overflow: visible;
+    scroll-margin-top: var(--header-height);
+  }
+
+  .business-model-section {
+    padding: 76px 7vw;
+    background: var(--white);
+    color: var(--navy);
+  }
+
+  .why-kicker {
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+
+  .why-copy h2 {
+    color: var(--navy);
+    font-size: clamp(40px, 11vw, 58px);
+  }
+
+  .why-copy p {
+    color: #647383;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .business-model-section .value-grid {
+    margin-top: 36px;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 22px;
+  }
+
+  .business-model-section .value-item {
+    min-height: 94px;
+    padding: 0;
+  }
+
+  .business-model-section .value-line {
+    width: 42px;
+    height: 6px;
+    margin-bottom: 17px;
+  }
+
+  .business-model-section .value-item.active .value-line {
+    width: 76px;
+  }
+
+  .business-model-section .value-item b {
+    color: var(--navy);
+    font-size: 18px;
+  }
+
+  .business-model-section .value-item small {
+    margin-top: 6px;
+    color: #7b8894;
+    font-size: 8px;
+  }
+}
+
+/* =========================================================
+   FINAL FIX — VIEWPORTS, SPACING & TNG LOGO
+   This block intentionally overrides older sizing rules above.
+========================================================= */
+
+/* Keep the exact supplied TNG transparent logo. */
+.brand img,
+.footer-brand img {
+  mix-blend-mode: normal !important;
+  filter:
+    drop-shadow(2px 0 0 rgba(255,255,255,.96))
+    drop-shadow(-2px 0 0 rgba(255,255,255,.96))
+    drop-shadow(0 2px 0 rgba(255,255,255,.96))
+    drop-shadow(0 -2px 0 rgba(255,255,255,.96)) !important;
+}
+
+.brand {
+  width: 128px;
+  height: 72px;
+}
+
+.brand img {
+  width: 116px;
+  height: 66px;
+  object-fit: contain;
+  display: block;
+}
+
+.footer-brand img {
+  width: 132px;
+  height: 64px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Fixed header: every navigated section begins directly below it. */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 0;
+}
+
+.hero,
+.about-section,
+.solutions-section,
+.business-model-section,
+.industries-section,
+.contact-section {
+  scroll-margin-top: 0;
+}
+
+@media (min-width: 901px) {
+  /* One complete browser viewport per main page section. */
+  .hero,
+  .about-section,
+  .solutions-section,
+  .business-model-section,
+  .industries-section,
+  .contact-section {
+    width: 100%;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    max-height: 100svh !important;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  /* Fixed header occupies part of the viewport, so content is kept
+     visually centered below it rather than creating a second partial slide. */
+  .hero {
+    padding-top: var(--header-height);
+  }
+
+  .about-section,
+  .solutions-section,
+  .business-model-section,
+  .industries-section,
+  .contact-section {
+    padding-top: calc(var(--header-height) + 34px);
+    padding-bottom: 34px;
+  }
+
+  /* Solutions: enough room for the heading + complete cards, without
+     exposing the Why TNG section at the bottom. */
+  .solutions-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .solutions-section .section-heading {
+    margin-bottom: 24px;
+  }
+
+  .solutions-section .section-heading h2 {
+    margin-top: 10px;
+  }
+
+  .solutions-section .section-heading p {
+    margin-top: 10px;
+  }
+
+  .solutions-section .solution-grid {
+    flex: 0 0 auto;
+  }
+
+  .solutions-section .card-image {
+    height: clamp(145px, 19vh, 205px);
+  }
+
+  .solutions-section .card-body {
+    padding: 16px 18px 18px;
+  }
+
+  .solutions-section .card-body h3 {
+    font-size: clamp(17px, 1.25vw, 20px);
+  }
+
+  .solutions-section .card-body p {
+    margin-top: 8px;
+    font-size: 10px;
+    line-height: 1.55;
+  }
+
+  .solutions-section .card-body ul {
+    margin-top: 10px;
+  }
+
+  .solutions-section .card-body li {
+    margin-bottom: 4px;
+    font-size: 8px;
+  }
+
+  /* Why TNG: clean full viewport, no old divider lines. */
+  .business-model-section {
+    padding-top: calc(var(--header-height) + 38px);
+    padding-bottom: 38px;
+    display: flex;
+    align-items: center;
+    background: var(--white);
+  }
+
+  .business-model-inner {
+    width: 100%;
+  }
+
+  .why-kicker {
+    display: block;
+    margin-bottom: 18px;
+    color: var(--yellow);
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: .34em;
+  }
+
+  .why-copy h2 {
+    margin: 0;
+    color: var(--navy);
+    font-size: clamp(50px, 5.1vw, 76px);
+    line-height: .98;
+    letter-spacing: -.045em;
+  }
+
+  .why-copy p {
+    max-width: 900px;
+    margin-top: 20px;
+    color: #647383;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .value-grid {
+    width: 100%;
+    margin-top: 54px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 34px;
+  }
+
+  .value-item {
+    min-height: 112px;
+    padding: 0;
+    border: 0 !important;
+    outline: 0;
+    background: transparent;
+    text-align: left;
+  }
+
+  .value-item::before,
+  .value-item::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .value-line {
+    width: 54px;
+    height: 7px;
+    margin: 0 0 24px;
+    background: var(--yellow);
+    opacity: .78;
+    transform: scaleX(1);
+    transform-origin: left center;
+    transition: width .3s ease, transform .3s ease, opacity .25s ease;
+  }
+
+  .value-item.active .value-line {
+    width: 94px;
+    opacity: 1;
+    transform: scaleX(1.04);
+  }
+
+  .value-item:hover .value-line {
+    width: 78px;
+    opacity: 1;
+  }
+
+  .value-item b {
+    color: var(--navy);
+    font-size: 24px;
+    line-height: 1.1;
+    font-weight: 800;
+  }
+
+  .value-item small {
+    margin-top: 7px;
+    color: #7b8894;
+    font-size: 10px;
+    line-height: 1;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .17em;
+  }
+
+  /* Prevent the next section from peeking through. */
+  .industries-section,
+  .contact-section {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@media (min-width: 901px) and (max-height: 850px) {
+  .about-section,
+  .solutions-section,
+  .business-model-section,
+  .industries-section,
+  .contact-section {
+    padding-top: calc(var(--header-height) + 24px);
+    padding-bottom: 24px;
+  }
+
+  .solutions-section .section-heading {
+    margin-bottom: 18px;
+  }
+
+  .solutions-section .section-heading h2 {
+    font-size: 42px;
+  }
+
+  .solutions-section .section-heading p {
+    font-size: 10px;
+  }
+
+  .solutions-section .card-image {
+    height: 150px;
+  }
+
+  .business-model-section {
+    padding-top: calc(var(--header-height) + 24px);
+    padding-bottom: 24px;
+  }
+
+  .why-kicker {
+    margin-bottom: 13px;
+    font-size: 15px;
+  }
+
+  .why-copy h2 {
+    font-size: 48px;
+  }
+
+  .why-copy p {
+    margin-top: 14px;
+    font-size: 11px;
+  }
+
+  .value-grid {
+    margin-top: 34px;
+    gap: 26px;
+  }
+
+  .value-item {
+    min-height: 92px;
+  }
+
+  .value-line {
+    width: 46px;
+    height: 6px;
+    margin-bottom: 17px;
+  }
+
+  .value-item.active .value-line {
+    width: 80px;
+  }
+
+  .value-item b {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 900px) {
+  .brand {
+    width: 100px;
+    height: 62px;
+  }
+
+  .brand img {
+    width: 94px;
+    height: 58px;
+    filter:
+      drop-shadow(2px 0 0 rgba(255,255,255,.94))
+      drop-shadow(-2px 0 0 rgba(255,255,255,.94))
+      drop-shadow(0 2px 0 rgba(255,255,255,.94))
+      drop-shadow(0 -2px 0 rgba(255,255,255,.94)) !important;
+  }
+
+  .hero,
+  .about-section,
+  .solutions-section,
+  .business-model-section,
+  .industries-section,
+  .contact-section {
+    width: 100%;
+    height: auto !important;
+    min-height: 100svh !important;
+    max-height: none !important;
+    overflow: visible !important;
+    scroll-margin-top: 0;
+  }
+}
+
+/* =========================================================
+   FINAL PAGE / WHY TNG POLISH
+   Added after the original rules so these values take priority.
+========================================================= */
+
+@media (min-width: 901px) {
+  /* Every main page section occupies exactly the visible area below the fixed header. */
+  html {
+    scroll-padding-top: var(--header-height);
+  }
+
+  .hero,
+  .about-section,
+  .solutions-section,
+  .business-model-section,
+  .industries-section,
+  .contact-section {
+    width: 100%;
+    height: calc(100svh - var(--header-height)) !important;
+    min-height: calc(100svh - var(--header-height)) !important;
+    max-height: calc(100svh - var(--header-height)) !important;
+    margin: 0;
+    overflow: hidden;
+    scroll-margin-top: var(--header-height);
+  }
+
+  .hero {
+    padding-top: 0;
+  }
+
+  .about-section,
+  .solutions-section,
+  .business-model-section,
+  .industries-section,
+  .contact-section {
+    padding-top: 34px;
+    padding-bottom: 34px;
+  }
+
+  .about-section,
+  .business-model-section,
+  .industries-section,
+  .contact-section {
+    display: flex;
+    align-items: center;
+  }
+
+  .solutions-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* WHY TNG — centered, clean, same visual language as the rest of the site. */
+  .business-model-section {
+    background:
+      radial-gradient(circle at 50% 40%, rgba(16,44,62,.42) 0%, rgba(7,22,34,0) 48%),
+      linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: var(--white);
+    text-align: center;
+  }
+
+  .business-model-inner {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+  }
+
+  .why-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .why-kicker {
+    margin: 0 0 20px;
+    color: var(--yellow);
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: .36em;
+    text-transform: uppercase;
+  }
+
+  .why-question {
+    display: inline-block;
+    margin-left: 3px;
+    color: var(--yellow);
+    font: inherit;
+  }
+
+  .why-copy h2 {
+    margin: 0;
+    color: var(--white);
+    font-size: clamp(54px, 5vw, 78px);
+    line-height: .98;
+    letter-spacing: -.045em;
+    font-weight: 800;
+  }
+
+  .why-copy h2 span {
+    color: var(--white);
+  }
+
+  .why-copy p {
+    max-width: 1000px;
+    margin: 26px auto 0;
+    color: rgba(255,255,255,.78);
+    font-size: 16px;
+    line-height: 1.65;
+    font-weight: 500;
+  }
+
+  .value-grid {
+    width: 100%;
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 34px;
+  }
+
+  .value-item {
+    min-height: 125px;
+    padding: 0;
+    border: 0 !important;
+    outline: 0;
+    background: transparent;
+    color: var(--white);
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .value-item::before,
+  .value-item::after,
+  .value-index,
+  .value-mark {
+    display: none !important;
+    content: none !important;
+  }
+
+  .value-line {
+    width: 52px;
+    height: 7px;
+    margin: 0 0 22px;
+    display: block;
+    flex: 0 0 auto;
+    background: var(--yellow);
+    opacity: .72;
+    transform: scaleX(1);
+    transform-origin: center;
+    transition: width .32s ease, transform .32s ease, opacity .25s ease;
+  }
+
+  .value-item.active .value-line {
+    width: 92px;
+    opacity: 1;
+    transform: scaleX(1.02);
+  }
+
+  .value-item:hover .value-line {
+    width: 78px;
+    opacity: 1;
+  }
+
+  .value-content {
+    display: block;
+  }
+
+  .value-item b {
+    display: block;
+    color: var(--white);
+    font-size: 25px;
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -.025em;
+    transition: transform .32s ease;
+  }
+
+  .value-item small {
+    display: block;
+    margin-top: 8px;
+    color: rgba(255,255,255,.58);
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .19em;
+  }
+
+  .value-item:hover b,
+  .value-item.active b {
+    transform: translateY(-1px);
+  }
+
+  .value-item:focus-visible {
+    outline: 2px solid var(--yellow) !important;
+    outline-offset: 8px;
+  }
+}
+
+/* Short desktop screens — keep the same composition without clipping the Why TNG content. */
+@media (min-width: 901px) and (max-height: 850px) {
+  .about-section,
+  .solutions-section,
+  .business-model-section,
+  .industries-section,
+  .contact-section {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
+  .why-kicker {
+    margin-bottom: 15px;
+    font-size: 17px;
+  }
+
+  .why-copy h2 {
+    font-size: 56px;
+  }
+
+  .why-copy p {
+    margin-top: 17px;
+    font-size: 13px;
+  }
+
+  .value-grid {
+    margin-top: 48px;
+    gap: 24px;
+  }
+
+  .value-item {
+    min-height: 105px;
+  }
+
+  .value-line {
+    width: 48px;
+    height: 6px;
+    margin-bottom: 17px;
+  }
+
+  .value-item.active .value-line {
+    width: 82px;
+  }
+
+  .value-item b {
+    font-size: 21px;
+  }
+
+  .value-item small {
+    margin-top: 7px;
+    font-size: 9px;
+  }
+}
+
+/* Mobile keeps natural document height so stacked content is never clipped. */
+@media (max-width: 900px) {
+  html {
+    scroll-padding-top: var(--header-height);
+  }
+
+  .business-model-section {
+    min-height: 100svh !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 80px 6vw !important;
+    background:
+      radial-gradient(circle at 50% 35%, rgba(16,44,62,.42) 0%, rgba(7,22,34,0) 50%),
+      linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: var(--white);
+    text-align: center;
+  }
+
+  .why-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .why-kicker {
+    margin-bottom: 16px;
+    font-size: 15px;
+  }
+
+  .why-copy h2 {
+    color: var(--white);
+    font-size: clamp(40px, 11vw, 58px);
+  }
+
+  .why-copy h2 span {
+    color: var(--white);
+  }
+
+  .why-copy p {
+    margin: 18px auto 0;
+    color: rgba(255,255,255,.75);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .value-grid {
+    width: 100%;
+    margin-top: 48px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 34px 18px;
+  }
+
+  .value-item {
+    min-height: 92px;
+    padding: 0;
+    text-align: center;
+    color: var(--white);
+  }
+
+  .value-line {
+    width: 46px;
+    height: 6px;
+    margin-bottom: 15px;
+  }
+
+  .value-item.active .value-line {
+    width: 78px;
+  }
+
+  .value-item b {
+    color: var(--white);
+    font-size: 20px;
+  }
+
+  .value-item small {
+    margin-top: 7px;
+    color: rgba(255,255,255,.58);
+    font-size: 9px;
+  }
+}
+
+/* =========================================================
+   FULL-SCREEN SECTION ALIGNMENT
+   Only controls section sizing/spacing — no content styling.
+========================================================= */
+
+html {
+  scroll-padding-top: var(--header-height);
+}
+
+main {
+  scroll-snap-type: y proximity;
+}
+
+main > section {
+  width: 100%;
+  height: calc(100svh - var(--header-height));
+  min-height: calc(100svh - var(--header-height));
+  max-height: calc(100svh - var(--header-height));
+  margin: 0;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  scroll-margin-top: var(--header-height);
+  overflow: hidden;
+}
+
+/* Keep the yellow value band as a normal full viewport section too. */
+.value-strip {
+  height: calc(100svh - var(--header-height));
+  min-height: calc(100svh - var(--header-height));
+  max-height: calc(100svh - var(--header-height));
+}
+
+/* Sections whose existing rules already define their height should
+   still obey the exact same viewport box. */
+.hero,
+.about-section,
+.solutions-section,
+.business-model-section,
+.industries-section,
+.contact-section {
+  height: calc(100svh - var(--header-height));
+  min-height: calc(100svh - var(--header-height));
+  max-height: calc(100svh - var(--header-height));
+  margin: 0;
+}
+
+/* Desktop: keep the content comfortably inside the fixed viewport. */
+@media (min-width: 901px) {
+  .hero {
+    padding-top: var(--header-height);
+  }
+
+  .about-section,
+  .industries-section,
+  .contact-section {
+    padding-top: 55px;
+    padding-bottom: 45px;
+  }
+
+  .solutions-section {
+    padding-top: 48px;
+    padding-bottom: 38px;
+  }
+
+  .business-model-section {
+    padding-top: 55px;
+    padding-bottom: 45px;
+  }
+
+  .value-strip {
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
+}
+
+/* On phones, content must be allowed to grow naturally so nothing is
+   clipped when cards/forms stack vertically. */
+@media (max-width: 900px) {
+  main {
+    scroll-snap-type: none;
+  }
+
+  main > section,
+  .hero,
+  .about-section,
+  .solutions-section,
+  .business-model-section,
+  .industries-section,
+  .value-strip,
+  .contact-section {
+    height: auto;
+    min-height: calc(100svh - var(--header-height));
+    max-height: none;
+    overflow: visible;
+    scroll-margin-top: var(--header-height);
+  }
+}
+
+
+/* =========================================================
+   FINAL OVERRIDE — EXACT ONE SCREEN PER SECTION
+========================================================= */
+
+/* =========================================================
+   FINAL OVERRIDE — EXACT ONE SCREEN PER SECTION
+   The header is fixed and overlays the top of each section.
+   Every main section is exactly one viewport tall on desktop,
+   tablet and mobile. Navigation snaps to the section start.
+========================================================= */
+
+:root{
+  --section-height: 100dvh;
+}
+
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 0;
+}
+
+body{
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* One viewport = one complete section. */
+main > section{
+  width: 100%;
+  height: var(--section-height) !important;
+  min-height: var(--section-height) !important;
+  max-height: var(--section-height) !important;
+  margin: 0 !important;
+  box-sizing: border-box;
+  scroll-margin-top: 0 !important;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* The browser itself is the scrolling container. */
+html{
+  scroll-snap-type: y mandatory;
+}
+
+/* Keep the fixed header above every section. */
+.site-header{
+  z-index: 1000;
+}
+
+/* The header is already accounted for by the existing hero padding.
+   Other sections keep their existing internal spacing. */
+.hero{
+  height: var(--section-height) !important;
+  min-height: var(--section-height) !important;
+  max-height: var(--section-height) !important;
+  overflow: hidden !important;
+}
+
+.about-section,
+.solutions-section,
+.business-model-section,
+.industries-section,
+.contact-section,
+.value-strip{
+  height: var(--section-height) !important;
+  min-height: var(--section-height) !important;
+  max-height: var(--section-height) !important;
+  overflow: hidden !important;
+}
+
+/* Remove the old viewport-minus-header rules that caused sections
+   to expose a slice of the next/previous section. */
+.solutions-section{
+  height: var(--section-height) !important;
+  min-height: var(--section-height) !important;
+  max-height: var(--section-height) !important;
+}
+
+/* On smaller screens, keep exactly one section visible at a time.
+   If a stacked section has more content than the viewport, its own
+   content scrolls internally instead of pushing the next section in. */
+@media (max-width: 900px){
+  main > section{
+    height: var(--section-height) !important;
+    min-height: var(--section-height) !important;
+    max-height: var(--section-height) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  html{
+    scroll-snap-type: y mandatory;
+  }
+
+  /* Do not let the mobile menu/layout create extra section height. */
+  .hero{
+    overflow: hidden !important;
+  }
+}
+
+/* Tablet/desktop: no internal scrollbar unless content genuinely
+   exceeds the fixed section. */
+@media (min-width: 901px){
+  main > section{
+    overflow: hidden !important;
+  }
+}
+
+/* =========================================================
+   VALUE STRIP — COMPACT BAND
+   This is intentionally NOT a full-screen section.
+   Everything else keeps the exact sizing above.
+========================================================= */
+
+.value-strip{
+  height: 190px !important;
+  min-height: 190px !important;
+  max-height: 190px !important;
+  overflow: hidden !important;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.value-strip .value-grid{
+  width: min(1200px, 86vw);
+  margin: 0 auto;
+}
+
+@media (max-width: 900px){
+  .value-strip{
+    height: 180px !important;
+    min-height: 180px !important;
+    max-height: 180px !important;
+    overflow: hidden !important;
+  }
+
+  .value-strip .value-grid{
+    width: 88vw;
+  }
+}
+
+@media (max-width: 600px){
+  .value-strip{
+    height: 210px !important;
+    min-height: 210px !important;
+    max-height: 210px !important;
+  }
+}
+
+/* =========================================================
+   FINAL SOLUTIONS ORDER + 4-CARD LAYOUT
+   01 Equipment / 02 Delivery / 03 Fleet / 04 Operations
+========================================================= */
+
+@media (min-width: 1101px) {
+  .solutions-section .solution-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .solutions-section .card-image {
+    height: clamp(135px, 17vh, 175px);
+  }
+
+  .solutions-section .card-body {
+    padding: 15px 16px 16px;
+  }
+
+  .solutions-section .card-number {
+    margin-bottom: 7px;
+    font-size: 9px;
+  }
+
+  .solutions-section .card-body h3 {
+    font-size: clamp(15px, 1.15vw, 19px);
+    line-height: 1.2;
+  }
+
+  .solutions-section .card-body p {
+    margin-top: 9px;
+    font-size: 9px;
+    line-height: 1.55;
+  }
+
+  .solutions-section .card-body ul {
+    margin-top: 12px;
+    padding-left: 13px;
+  }
+
+  .solutions-section .card-body li {
+    margin-bottom: 5px;
+    font-size: 8px;
+    line-height: 1.3;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1100px) {
+  .solutions-section .solution-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .solutions-section .card-image {
+    height: 150px;
+  }
+
+  .solutions-section .card-body {
+    padding: 14px 16px 16px;
+  }
+
+  .solutions-section .card-body h3 {
+    font-size: 17px;
+  }
+
+  .solutions-section .card-body p {
+    font-size: 9px;
+  }
+
+  .solutions-section .card-body li {
+    font-size: 8px;
+    margin-bottom: 4px;
+  }
+}
+
+@media (max-width: 900px) {
+  .solutions-section .solution-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .solutions-section .card-image {
+    height: 220px;
+  }
+}
+
+@media (min-width: 901px) and (max-height: 820px) {
+  .solutions-section .section-heading {
+    margin-bottom: 16px;
+  }
+
+  .solutions-section .section-heading h2 {
+    margin-top: 8px;
+    font-size: clamp(34px, 3.4vw, 48px);
+  }
+
+  .solutions-section .section-heading p {
+    margin-top: 8px;
+    font-size: 11px;
+  }
+
+  .solutions-section .card-image {
+    height: 125px;
+  }
+
+  .solutions-section .card-body {
+    padding: 12px 14px 13px;
+  }
+
+  .solutions-section .card-body p {
+    margin-top: 7px;
+    font-size: 8px;
+    line-height: 1.45;
+  }
+
+  .solutions-section .card-body ul {
+    margin-top: 9px;
+  }
+
+  .solutions-section .card-body li {
+    margin-bottom: 3px;
+    font-size: 7px;
+  }
+}
+
+/* =========================================================
+   HERO — FULL IMAGE (never cropped)
+   Put at the very END of style.css
+========================================================= */
+.hero{
+  isolation: isolate;
+  align-items: flex-start;
+  background-image: none !important;   /* the image is drawn by ::before / ::after below */
+  background-color: var(--navy);
+}
+
+/* soft blurred copy fills any empty space above the picture */
+.hero::after{
+  content: "";
+  position: absolute;
+  inset: -60px;
+  z-index: -1;
+  background: url("assets/hero.png.png") center / cover no-repeat;
+  filter: blur(30px) brightness(.45) saturate(1.1);
+}
+
+/* the real, uncropped image */
+.hero::before{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: min(100%, calc(100dvh * 2.624));
+  aspect-ratio: 2031 / 774;
+  background: url("assets/hero.png.png") center / 100% 100% no-repeat;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+          mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+}
+
+.hero-overlay{
+  background: linear-gradient(
+    90deg,
+    rgba(4,18,29,.85) 0%,
+    rgba(4,18,29,.52) 38%,
+    rgba(4,18,29,0)   68%
+  );
+}
+
+.hero-content{
+  padding-top: 40px;
+}
+
+@media (max-width: 900px){
+  .hero-overlay{
+    background: linear-gradient(
+      180deg,
+      rgba(4,18,29,.6) 0%,
+      rgba(4,18,29,.2) 100%
+    );
+  }
+}
+/* =========================================================
+   LANGUAGE DROPDOWN (EN / AR) + ARABIC (RTL) SUPPORT
+   Paste at the VERY END of style.css (after the hero fix)
+========================================================= */
+
+/* small label wrapper used inside buttons */
+.t { font-style: normal; }
+
+
+/* ---------- Language dropdown ---------- */
+
+.lang-dd {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.lang-current {
+  height: 46px;
+  padding: 0 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 6px;
+
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+
+  cursor: pointer;
+  transition: border-color .25s ease, background .25s ease;
+}
+
+.lang-current:hover,
+.lang-dd.open .lang-current {
+  border-color: var(--yellow);
+  background: rgba(255,196,0,.06);
+}
+
+.lang-globe {
+  color: var(--yellow);
+  flex-shrink: 0;
+}
+
+.lang-chevron {
+  opacity: .75;
+  transition: transform .25s ease;
+}
+
+.lang-dd.open .lang-chevron {
+  transform: rotate(180deg);
+}
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  inset-inline-end: 0;
+
+  min-width: 176px;
+  padding: 6px;
+  list-style: none;
+
+  background: var(--navy-2);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 8px;
+  box-shadow: 0 16px 36px rgba(0,0,0,.4);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+}
+
+.lang-dd.open .lang-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-option {
+  width: 100%;
+  padding: 11px 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: start;
+
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+}
+
+.lang-option:hover {
+  background: rgba(255,196,0,.1);
+  color: var(--yellow);
+}
+
+.lang-option .code {
+  min-width: 26px;
+  color: var(--yellow);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+.lang-option .name {
+  flex: 1;
+}
+
+.lang-option .check {
+  color: var(--yellow);
+  opacity: 0;
+}
+
+.lang-option.active .check {
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .lang-dd {
+    margin-inline-start: auto;
+  }
+
+  .lang-current {
+    height: 40px;
+    padding: 0 11px;
+    gap: 7px;
+    font-size: 11px;
+  }
+}
+
+
+/* =========================================================
+   ARABIC / RTL
+========================================================= */
+
+/* Arabic font */
+html[dir="rtl"] body {
+  font-family: "Cairo", "Montserrat", sans-serif;
+}
+
+/* Letter-spacing breaks Arabic letter joining, so it is switched off */
+html[dir="rtl"] * {
+  letter-spacing: 0 !important;
+}
+
+/* Arabic needs more line height than Latin headings */
+html[dir="rtl"] .hero h1 {
+  line-height: 1.3 !important;
+}
+
+html[dir="rtl"] h2,
+html[dir="rtl"] h3 {
+  line-height: 1.35 !important;
+}
+
+html[dir="rtl"] p,
+html[dir="rtl"] .hero-text {
+  line-height: 1.9 !important;
+}
+
+/* Arabic glyphs look smaller, so the tiny card text is bumped slightly */
+html[dir="rtl"] .solutions-section .card-body p {
+  font-size: 10px !important;
+  line-height: 1.7 !important;
+}
+
+html[dir="rtl"] .solutions-section .card-body li {
+  font-size: 9px !important;
+}
+
+
+/* ---------- Header ---------- */
+
+html[dir="rtl"] .main-nav {
+  margin-left: 48px;
+  margin-right: auto;
+}
+
+@media (max-width: 1100px) {
+  html[dir="rtl"] .main-nav {
+    margin-left: 25px;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  html[dir="rtl"] .main-nav {
+    margin: 0;
+  }
+}
+
+html[dir="rtl"] .menu-toggle {
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+
+/* ---------- Hero ---------- */
+
+html[dir="rtl"] .hero-content {
+  margin-left: 0;
+  margin-right: 7vw;
+}
+
+html[dir="rtl"] .hero-overlay {
+  background: linear-gradient(
+    270deg,
+    rgba(4,18,29,.85) 0%,
+    rgba(4,18,29,.52) 38%,
+    rgba(4,18,29,0)   68%
+  );
+}
+
+html[dir="rtl"] .scroll-down {
+  right: auto;
+  left: 6vw;
+}
+
+html[dir="rtl"] .scroll-down span {
+  margin-left: 0;
+  margin-right: 8px;
+}
+
+@media (max-width: 900px) {
+  html[dir="rtl"] .hero-content {
+    margin: 0;
+  }
+
+  html[dir="rtl"] .hero-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(4,18,29,.6) 0%,
+      rgba(4,18,29,.2) 100%
+    );
+  }
+
+  html[dir="rtl"] .scroll-down {
+    left: 8vw;
+  }
+}
+
+/* Arrows point the other way in Arabic */
+html[dir="rtl"] .btn span,
+html[dir="rtl"] .form-submit span {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
+
+/* ---------- About ---------- */
+
+html[dir="rtl"] .about-visual-line {
+  left: auto;
+  right: 60px;
+}
+
+html[dir="rtl"] .circle-one {
+  right: auto;
+  left: 15px;
+}
+
+html[dir="rtl"] .circle-two {
+  right: auto;
+  left: 75px;
+}
+
+@media (max-width: 900px) {
+  html[dir="rtl"] .about-visual-line {
+    right: 35px;
+  }
+}
+
+
+/* ---------- Solutions ---------- */
+
+html[dir="rtl"] .solutions-section .card-body ul,
+html[dir="rtl"] .card-body ul {
+  padding-left: 0 !important;
+  padding-right: 14px;
+}
+
+
+/* ---------- Industries ---------- */
+
+html[dir="rtl"] .industry-item:nth-child(odd) {
+  border-right: 0;
+  border-left: 1px solid rgba(255,255,255,.15);
+}
+
+
+/* ---------- Value strip ---------- */
+
+html[dir="rtl"] .value-strip > div {
+  border-right: 0;
+  border-left: 1px solid rgba(7,22,34,.2);
+}
+
+html[dir="rtl"] .value-strip > div:last-child {
+  border-left: 0;
+}
+
+
+/* ---------- Contact ---------- */
+
+html[dir="rtl"] .contact-details a {
+  text-align: right;
+}
+
+html[dir="rtl"] input[type="email"],
+html[dir="rtl"] input[type="tel"] {
+  direction: ltr;
+  text-align: right;
+}
+/* WHY TNG: keep the words white in every state */
+.value-item b,
+.value-item:hover b,
+.value-item:focus b,
+.value-item:focus-visible b,
+.value-item.active b {
+  color: var(--white) !important;
+}
+
+.value-item small,
+.value-item:hover small,
+.value-item.active small {
+  color: rgba(255,255,255,.62) !important;
+}
+.value-item.active small {
+  color: rgba(255,255,255,.9) !important;
+}
